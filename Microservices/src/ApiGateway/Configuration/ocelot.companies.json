@@ -1,0 +1,28 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/companies",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/companies",
+      "ServiceName": "CompanyService",
+      "SwaggerKey": "CompanyService",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/companies/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/companies/{everything}",
+      "ServiceName": "CompanyService",
+      "SwaggerKey": "CompanyService",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    }
+  ]
+}

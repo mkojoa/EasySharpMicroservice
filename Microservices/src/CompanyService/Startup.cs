@@ -1,6 +1,7 @@
 using CompanyService.Domain;
 using CompanyService.Domain.Events;
 using EasySharp.Cache;
+using EasySharp.Consul;
 using EasySharp.Core;
 using EasySharp.Core.Cors;
 using EasySharp.EfCore;
@@ -35,6 +36,7 @@ namespace CompanyService
                .AddEasySharp(typeof(Startup), typeof(CompanyDomainContext))
                .AddEfCore<CompanyDomainContext>()
                .AddDocs()
+               .AddConsul(Configuration)
                .AddCorsOption()
                .AddCacheable()
                .AddApiPagination()
@@ -42,7 +44,7 @@ namespace CompanyService
                .AddOutbox();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifetime)
         {
             if (env.IsDevelopment())
             {
@@ -54,6 +56,7 @@ namespace CompanyService
             app
                .UseEasySharp()
                .UseDocs()
+               .UseConsul(lifetime)
                .UseSubscribeEvent<CompanyCreatedEvent>();
         }
 

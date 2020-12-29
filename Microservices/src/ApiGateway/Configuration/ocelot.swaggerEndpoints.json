@@ -1,0 +1,17 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "CompanyService",
+      "Config": [
+        {
+          "Name": "Companies Microservice",
+          "Version": "v1",
+          "Service": {
+            "Name": "CompanyService",
+            "Path": "/v1/swagger.json"
+          }
+        }
+      ]
+    }
+  ]
+}

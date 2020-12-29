@@ -13,7 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySharp", "src\EasySharp.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyService", "Microservices\src\CompanyService\CompanyService.csproj", "{4AAE03DF-53CF-41B3-86EF-84FBDFD22923}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "Microservices\src\ApiGateway\ApiGateway.csproj", "{ED7A504E-46A3-41DC-8B29-9CB9BD9A5BE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "Microservices\src\ApiGateway\ApiGateway.csproj", "{ED7A504E-46A3-41DC-8B29-9CB9BD9A5BE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA420178-05AA-46D2-99EE-8FCC446019BA}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,11 +1,9 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MMLib.SwaggerForOcelot.DependencyInjection;
+using System.IO;
 
 namespace ApiGateway
 {
@@ -18,9 +16,31 @@ namespace ApiGateway
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+                .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    //var ocelotJson = new JObject();
+                    //foreach (var jsonFilename in Directory.EnumerateFiles("Configuration", "ocelot.*.json", SearchOption.AllDirectories))
+                    //{
+                    //    using (StreamReader fi = File.OpenText(jsonFilename))
+                    //    {
+                    //        var json = JObject.Parse(fi.ReadToEnd());
+                    //        ocelotJson.Merge(json, new JsonMergeSettings
+                    //        {
+                    //            MergeArrayHandling = MergeArrayHandling.Union
+                    //        });
+                    //    }
+                    //}
+
+                    //File.WriteAllText("ocelot.json", ocelotJson.ToString());
+
+                    config
+                        .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json",
+                            optional: true, reloadOnChange: true)
+                        .AddOcelotWithSwaggerSupport(folder: "Configuration")
+                        .AddEnvironmentVariables();
+                })
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
     }
 }
