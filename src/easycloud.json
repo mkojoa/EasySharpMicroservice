@@ -1,0 +1,132 @@
+{
+  "LoggerOptions": {
+    "applicationName": "demo-service",
+    "excludePaths": [ "/ping", "/metrics" ],
+    "level": "information",
+    "file": {
+      "enabled": true,
+      "path": "Logs/logs.txt",
+      "interval": "day"
+    },
+    "seq": {
+      "enabled": true,
+      "url": "http://localhost:5341",
+      "token": "secret"
+    }
+  },
+
+  "EfCoreOptions": {
+    "ConnectionString": "Server=DESKTOP-6BR1LOC;Initial Catalog=EasySharp;user id=sa;password=&kumfipolice12"
+  },
+
+  "CorsOptions": {
+    "Enabled": true,
+    "Name": "CorsPolicy",
+    "Links": [
+      "http://localhost:56965"
+    ]
+  },
+
+  "AntiXssOptions": {
+    "Enabled": true
+  },
+
+  "SwaggerOptions": {
+    "enabled": true,
+    "reDocEnabled": false,
+    "name": "v1",
+    "title": "Menu Builder Service",
+    "version": ".Net Core 3.1 v1",
+    "routePrefix": "docs",
+    "Description": "Services for HCM market endpoint",
+    "TermsOfService": "https://persol.com/terms",
+    "IncludeSecurity": true,
+    "SecurityOptions": {
+      "xmlDoc": true,
+      "apiName": "persolstoreapi",
+      "apiId": "persolstorecode",
+      "tokenUrl": "http://psl-app-vm3/PersolStoreAuth/connect/token",
+      "authorityURL": "http://psl-app-vm3/PersolStoreAuth/connect/authorize",
+      "authority": "http://psl-app-vm3/PersolStoreAuth",
+      "clientSecret": "PeRstRe*$^",
+      "issuerUri": "http://psl-app-vm3/PersolStoreAuth",
+      "requireHttpsMetadata": false,
+      "Folder": "", //"",
+      "filterClassName": "AuthorizeCheckOperationFilter",
+      "Contact": {
+        "Name": "Michael Ameyaw",
+        "Email": "eric.boateng@persol.net;micahel.ameyaw@persol.net",
+        "Url": "https://www.persol.net"
+      },
+      "License": {
+        "Name": "Persol Systems Ltd",
+        "Url": "http://www.persol.net/"
+      },
+      "Scope": {
+        "Name": "persolstoreapi",
+        "Description": "The Scope needed to Access HCM Persol Store API"
+      }
+    }
+  },
+
+  "Cacheable": {
+    "Redis": {
+      "Enable": true,
+      "Connection": "localhost:6379",
+      "InstanceName": "RedisCacheTestDB"
+    },
+    "LocalStorage": {
+      "Enable": true,
+      "AutoLoad": true,
+      "AutoSave": true,
+      "EnableEncryption": true,
+      "EncryptionSalt": "1e69e0a615e8cb813812ca797d75d4f08bdc2f56",
+      "EncryptionKey": "password",
+      "Folder": "wwwroot\\storage\\disk\\",
+      "Filename": ".localstorage"
+    }
+  },
+
+
+  "MessageBrokersOptions": {
+    "Enable": true,
+    "messageBrokerType": "rabbitmq",
+    "username": "guest",
+    "password": "guest",
+    "virtualHost": "/",
+    "port": 5672,
+    "hostnames": [
+      "localhost"
+    ],
+    "requestTimeout": "00:00:10",
+    "publishConfirmTimeout": "00:00:01",
+    "recoveryInterval": "00:00:10",
+    "persistentDeliveryMode": true,
+    "autoCloseConnection": true,
+    "automaticRecovery": true,
+    "topologyRecovery": true,
+    "exchange": {
+      "durable": true,
+      "autoDelete": false,
+      "type": "fanout",
+      "name": "testms"
+    },
+    "queue": {
+      "declare": true,
+      "durable": true,
+      "exclusive": false,
+      "autoDelete": false
+    }
+  },
+
+  "OutboxOptions": {
+    "Enable": true,
+    "OutboxType": "ef",
+    "DeleteAfter": true
+  },
+
+  "EventStoresOptions": {
+    "Enable": true,
+    "EventStoreType": "ef"
+  }
+}

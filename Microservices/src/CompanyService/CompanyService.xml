@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CompanyService</name>
+    </assembly>
+    <members>
+        <member name="M:CompanyService.Commands.Handlers.CreateCompanyCommandHandler.#ctor(CompanyService.Domain.CompanyDomainContext)">
+            <summary>
+            
+            </summary>
+            <param name="db"></param>
+        </member>
+        <member name="M:CompanyService.Commands.Handlers.CreateCompanyCommandHandler.Handle(CompanyService.Commands.Command.CreateCompanyCommand,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CompanyService.Domain.CompanyDomainContext.Companies">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CompanyService.Domain.CompanyDomainContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:CompanyService.Domain.CompanyDomainContext.OnSaveChangesAndCommitEvent(EasySharp.Core.Events.IEvent)">
+            <summary>
+            Save db changes and commit the event to rabbit mq
+            </summary>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CompanyService.Program">
+            <summary>
+            Program class cs
+            </summary>
+        </member>
+        <member name="M:CompanyService.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:CompanyService.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
